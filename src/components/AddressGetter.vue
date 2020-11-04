@@ -6,6 +6,7 @@
       v-model.trim="postcode"
       :items="locationList"
       :item-text="'postcode'"
+      :filter="filter"
       no-data-text="It seems the postcode is not in our database :("
     ></v-autocomplete>
     <div v-if="location" class="pa-4">
@@ -49,6 +50,14 @@ export default class AddressGetter extends Vue {
   public error = '' as string
   public postcode = '' as string
   public location = null
+  public filter = (item: any, queryText: string, itemText: string) => {
+    let itemTextNoSpaces = itemText.replace(' ', '')
+
+    return ( 
+      itemText.toLocaleLowerCase().indexOf(queryText.toLocaleLowerCase()) > -1
+      || itemTextNoSpaces.toLocaleLowerCase().indexOf(queryText.toLocaleLowerCase()) > -1
+    )
+  }
 
   mounted () {
     locations.list().then((res: AxiosRequestConfig) => {
