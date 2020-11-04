@@ -30,14 +30,6 @@ import { AxiosRequestConfig } from 'axios'
 
 @Component({
   name: 'AdressGetter',
-  computed: {
-    results(): Array<String> {
-      let results = (this as any).locationList.filter((location: Location) => {
-        if (location.postcode === (this as any).postcode) return location
-      })
-      return results
-    },
-  },
   watch: {
     postcode: function (val) {
       if (val) {
@@ -53,8 +45,6 @@ import { AxiosRequestConfig } from 'axios'
   },
 })
 export default class AddressGetter extends Vue {
-  @Prop() private msg!: string
-
   public locationList = [] as Array<Location>
   public error = '' as string
   public postcode = '' as string
