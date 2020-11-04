@@ -30,6 +30,12 @@ export default Vue.extend({
     h1, h5, h2, h3 {
       color: rgb(235, 127, 27);
     }
+    h1 { 
+      margin-bottom: 1rem;
+      @media (max-width: 700px) {
+        font-size: 1.5rem;
+      }
+    }
   }
   .locations-app__content {
     backdrop-filter: blur(5px);

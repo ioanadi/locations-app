@@ -6,7 +6,7 @@
       v-model.trim="postcode"
       :items="locationList"
       :item-text="'postcode'"
-      no-data-text="It seems the postcode is not in out database :("
+      no-data-text="It seems the postcode is not in our database :("
     ></v-autocomplete>
     <div v-if="location" class="pa-4">
       <h3>Location details:</h3>
@@ -14,9 +14,9 @@
       <p>Eastings: {{location.eastings}}</p>
       <p>Northings: {{location.northings}}</p>
       <p>Country: {{location.country}}</p>
-      <p> Nhs ha:{{location.nhs_ha}}</p>
+      <p>Nhs ha: {{location.nhs_ha}}</p>
       <p>Longitude: {{location.longitude}}</p>
-      <p>Latitude{{location.latitude}}</p>
+      <p>Latitude: {{location.latitude}}</p>
       <p></p>
     </div>
   </div>
@@ -46,6 +46,8 @@ import { AxiosRequestConfig } from 'axios'
             (this as any).location = location
           }
         })
+      } else {
+        (this as any).location = null
       } 
     }
   },
